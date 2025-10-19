@@ -1,8 +1,13 @@
-$size: 500px;
+$size: 400px;
+$white: #f1f1f1;
+$grey: #808080;
+$dark-grey: #151515;
+$near-black: #010101;
+$black: #000000;
 
 @font-face {
     font-family: "Eraser";
-    src: url("https://assets.codepen.io/8841541/eraser.regular.ttf");
+    src: url("../assets/eraser.regular.ttf") format("truetype");
     font-weight: normal;
     font-style: normal;
 }
@@ -24,13 +29,12 @@ $size: 500px;
 }
 
 html {
-    background:
-        linear-gradient(rgba(50, 50, 50, 0.9), rgba(50, 50, 50, 0.5)), url("https://assets.codepen.io/8841541/set.jpeg");
+    background: linear-gradient(rgba(50, 50, 50, 0.9), rgba(50, 50, 50, 0.5)), url("../assets/set.jpeg");
     background-size: cover;
 }
 
 .text {
-    color: #f1f1f1;
+    color: $white;
     text-transform: uppercase;
     font-style: italic;
     display: inline;
@@ -40,6 +44,12 @@ html {
         padding-left: 4px;
         padding-top: 2px;
     }
+}
+.chalk-text {
+    font-family: "Eraser";
+    color: white;
+    font-size: 1.5rem;
+    line-height: 0;
 }
 
 .outercontainer {
@@ -55,10 +65,10 @@ html {
     clip-path: polygon(0% 0%, 47% 0%, 100% 100%, 0% 100%);
     height: 100px;
     width: 100px;
-    border: 0.1rem solid grey;
+    border: 0.1rem solid $grey;
     z-index: 2;
     position: relative;
-    background-color: #010101;
+    background-color: $near-black;
     left: 0;
     top: 100px;
     border-radius: 10px;
@@ -87,7 +97,7 @@ html {
 .container {
     width: $size;
     height: $size;
-    background-color: #000000;
+    background-color: $black;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
@@ -106,13 +116,13 @@ html {
         background-color: #151515;
         display: flex;
         justify-content: space-between;
-        border-bottom: 1px solid #000;
+        border-bottom: 1px solid $black;
         overflow: hidden;
         border-radius: 10px 0 0 0;
         &--white {
             width: 15%;
             height: 100%;
-            background-color: #f1f1f1;
+            background-color: $white;
             transform: skew(20deg);
             &:first-child {
                 visibility: hidden;
@@ -130,7 +140,7 @@ html {
         &--white {
             width: 15%;
             height: 100%;
-            background-color: #f1f1f1;
+            background-color: $white;
             transform: skew(-20deg);
         }
     }
@@ -150,16 +160,16 @@ html {
     height: 25%;
     display: flex;
     justify-content: space-around;
-    border-top: 4px solid #f1f1f1;
-    border-bottom: 4px solid #f1f1f1;
+    border-top: 4px solid $white;
+    border-bottom: 4px solid $white;
 }
 
+.roll,
 .scene,
-.take,
-.roll {
+.take {
     width: 33%;
     height: 100%;
-    background: #151515;
+    background: $dark-grey;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -167,18 +177,16 @@ html {
     align-content: flex-start;
     padding: 0;
     &__text {
-        font-family: "Eraser";
-        color: white;
-        font-size: 1.5rem;
+        @extend .chalk-text;
     }
 }
 
 .scene {
-    border-right: 4px solid #f1f1f1;
+    border-right: 4px solid $white;
 }
 
 .take {
-    border-right: 4px solid #f1f1f1;
+    border-right: 4px solid $white;
 }
 
 .date-prod-sound {
@@ -186,7 +194,7 @@ html {
     height: 25%;
     display: flex;
     justify-content: space-around;
-    border-bottom: 4px solid #f1f1f1;
+    border-bottom: 4px solid $white;
 }
 
 .date-prod {
@@ -196,33 +204,55 @@ html {
 
 .date,
 .prod {
-    background: #151515;
+    background: $dark-grey;
     width: 100%;
     height: 50%;
     display: flex;
-    border-right: 4px solid #f1f1f1;
+    border-right: 4px solid $white;
 }
 
 .date {
-    border-bottom: 4px solid #f1f1f1;
+    border-bottom: 4px solid $white;
 }
 .sound {
-    background: #151515;
+    background: $dark-grey;
     width: 40%;
+    &__text {
+        @extend .chalk-text;
+        font-size: 1.5rem;
+        text-align: center;
+    }
+}
+
+.date,
+.prod {
+    &__text {
+        @extend .chalk-text;
+        font-size: 1rem;
+    }
 }
 
 .director {
     width: 95%;
     height: 15%;
-    border-bottom: 4px solid #f1f1f1;
-    background: #151515;
+    border-bottom: 4px solid $white;
+    background: $dark-grey;
 }
 
 .cinematographer {
     width: 95%;
     height: 15%;
-    border-bottom: 4px solid #f1f1f1;
-    background: #151515;
+    border-bottom: 4px solid $white;
+    background: $dark-grey;
+}
+
+.director,
+.cinematographer {
+    &__text {
+        @extend .chalk-text;
+        font-size: 1rem;
+        margin-left: 3rem;
+    }
 }
 
 .rotateUp {
